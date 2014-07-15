@@ -1,0 +1,96 @@
+.fn-left{
+	float: left;
+}
+.fn-right{
+	float: right;
+}
+.fn-text-align-center {
+	text-align: center;
+}
+input, img {
+	vertical-align: middle;
+}
+img {
+	border: 0;
+}
+.slider, .slider img {
+	margin-bottom: 0;
+	height: 150px;
+}
+
+.btn-dis-icon {
+	width: 28%;
+	margin: 20px 5px;
+	height: 18%;
+	display: inline-block;
+	border-radius: 10px;
+}
+
+.card{
+	background: none;
+	border: none;
+}
+
+#cards .card, #others {
+	-webkit-box-sizing: border-box;
+	width: 100%;
+	/*padding: 28px 12px 6px;*/
+	margin: 10px auto;
+	
+}
+
+.tpl.c1 .row1col1 {
+	-webkit-box-sizing: border-box;
+	width: 100%;
+	height: 98px;
+	margin: 10px auto;
+	padding: 0 1px;
+	overflow: hidden;
+}
+
+.tpl.c1 .row1col1 a {
+	border-radius: 4px;
+	display: inline-block;
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+}
+
+.tpl.c2 .row1col1 {
+	height: 148px;
+	overflow: hidden;
+}
+
+.tpl.c2 .row1col1 a {
+	border-radius: 4px;
+	overflow: hidden;
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+}
+
+#channel {
+	margin-top:0 ;
+	overflow: hidden;
+}
+
+.tpl.c0 .row1col2 {
+	width: 100%;
+	-webkit-box-sizing: border-box;
+	height: 72px;
+	margin-bottom: 10px;
+	padding: 0 2px;
+	display: -webkit-box;
+	-webkit-box-pack: justify;
+}
+
+.tpl.c0 .row1col2 a {
+	border-radius: 4px;
+	display: block;
+	width: 50%;
+	height: 100%;
+	overflow: hidden;
+	text-align: center;
+}

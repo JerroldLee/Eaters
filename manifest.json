@@ -11,12 +11,12 @@
 		"url": ""
 	},
 	"id": "H502F9489",
-	"launch_path": "example-android-notes\/index.html",
+	"launch_path": "zh/index.html",
 	"license": {
 		"description": "",
 		"url": ""
 	},
-	"name": "Eaters",
+	"name": "ihome",
 	"permissions": {
 		"Accelerometer": {
 			"description": "\u8bbf\u95ee\u8bbe\u5907\u611f\u5e94\u5668"
@@ -111,7 +111,7 @@
 					},
 					"iphone": {
 					},
-					"prerendered": ""
+					"prerendered": "true"
 				}
 			},
 			"orientation": [

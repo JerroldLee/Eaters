@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Notes</title>
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<!-- Roboto -->
+		<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,500,700">
+
+		<!--<link rel="apple-touch-icon-precomposed" href="images/sys/iphone_logo.png" />-->
+		<link rel="apple-touch-startup-image" href="images/sys/iphone_logo.png" />
+		<link rel="stylesheet" href="../css/ratchet.min.css">
+		<link rel="stylesheet" href="../css/ratchet-theme-ios.min.css">
+		<link rel="stylesheet" href="css/app.css">
+		<script src="../js/ratchet.min.js"></script>
+		<script type="text/javascript" src="../js/common.js" charset="utf-8"></script>
+	</head>
+	<body>
+		<header class="bar bar-nav">
+			<a class="icon icon-left-nav pull-left" onclick="back();">
+				返回
+			</a>
+			<h1 class="title">发现</h1>
+		</header>
+
+		<div class="content fn-text-align-center">
+			<div class="card tpl c1">
+				<div class="row1col1">
+					<a href="http://h5.m.taobao.com/paimai/home.html?spm=0.0.0.0&amp;locate=home-3-2&amp;actparam=1_null_h22571_%E6%8B%8D%E5%8D%96H5" data-spm-anchor-id="0.0.0.0">
+						<img class="" src="http://gtms02.alicdn.com/tps/i2/TB1dxxsFVXXXXc5XXXXUgztRVXX-588-196.jpg" width="100%" height="100%" style="visibility: visible;">
+					</a>
+				</div>
+				<div class="row1col1">
+					<a href="http://miao.tmall.com/go/market/miao/m.php?locate=home-3-3&amp;actparam=1_null_h22572_%E5%96%B5%E9%B2%9C%E7%94%9FH5">
+						<img class="" src="http://gtms02.alicdn.com/tps/i2/T1jlFTFpXJXXaJEOrZ-588-196.png" width="100%" height="100%" style="visibility: visible;">
+					</a>
+				</div><h4 class="decoration"><span></span></h4>
+			</div>
+			<!--<div class="card tpl c2">
+				<div class="row1col1">
+					<a href="http://market.m.taobao.com/market/diandian/tdd-worldcup.php?spm=0.0.0.0&amp;locate=home-2-1&amp;actparam=1_null_h23759_%E6%B7%98%E7%82%B9%E7%82%B9H5-%E4%B8%96%E7%95%8C%E6%9D%AF&amp;sprefer=pwt002" data-spm-anchor-id="0.0.0.0">
+						<img class="row1col1-img" src="http://gtms02.alicdn.com/tps/i2/TB1rXrwFFXXXXXbaXXXNR4hSFXX-592-296.png" width="100%" height="100%" style="visibility: visible;">
+					</a>
+				</div>
+			</div>-->
+			<div id="channel" class="card tpl c0">
+				<div class="row1col2">
+					<a index="0" href="http://m.taobao.com/channel/act/mobile/qianggou.html?spm=0.0.0.0&amp;locate=home-1-6&amp;actparam=1_72091_h26152_null" data-spm-anchor-id="0.0.0.0">
+						<img class="fn-left" src="http://gtms03.alicdn.com/tps/i3/T1d4z2FrxXXXa8j.Iq-288-144.png" width="94%" height="100%" style="visibility: visible;">
+					</a>
+					<a index="1" href="http://h5.m.taobao.com/channel/act/wap/sjzxmjtg.php?locate=home-1-7&amp;actparam=1_72091_h26153_null&amp;query=life&amp;sprefer=pca180">
+						<img class="fn-right" src="http://gtms01.alicdn.com/tps/i1/T18c4KFzBvXXXA41.t-292-144.jpg" width="94%" height="100%" style="visibility: visible;">
+					</a>
+				</div>
+				<div class="row1col2">
+					<a index="2" href="http://fav.m.taobao.com/shopDynamicIndex.htm?locate=home-1-8&amp;actparam=1_72091_h26154_null&amp;query=store&amp;sprefer=p23878&amp;_navigation_params=%7B%22needlogin%22%3A%221%22%7D">
+						<img class="fn-left" src="http://gtms04.alicdn.com/tps/i4/T1n.uYFX4aXXcc6K.t-292-144.png" width="94%" height="100%" style="visibility: visible;">
+					</a>
+					<a index="3" href="http://h5.m.taobao.com/vip/index3.html?locate=home-1-9&amp;actparam=1_72091_h26155_null">
+						<img class="fn-right" src="http://gtms04.alicdn.com/tps/i4/T1w32kFf0dXXcc6K.t-292-144.png" width="94%" height="100%" style="visibility: visible;">
+					</a>
+				</div>
+			</div>
+			<button class="btn btn-primary btn-block btn-dis-icon">
+				家庭心事
+			</button>
+			<button class="btn btn-positive btn-block btn-dis-icon">
+				家庭菜单
+			</button>
+			<button class="btn btn-negative btn-block btn-dis-icon">
+				家庭游戏
+			</button>
+		</div>
+
+		<nav class="bar bar-tab">
+			<a class="tab-item active" href="#">
+				<span class="icon icon-home"></span>
+				<span class="tab-label">主页</span>
+			</a>
+			<a class="tab-item" onclick="clicked('discover.html');">
+				<span class="icon icon-star-filled"></span>
+				<span class="tab-label">发现</span>
+			</a>
+			<a class="tab-item" href="#">
+				<span class="icon icon-search"></span>
+				<span class="tab-label">搜索</span>
+			</a>
+			<a class="tab-item" href="#">
+				<span class="icon icon-person"></span>
+				<span class="tab-label">个人中心</span>
+			</a>
+			<a class="tab-item" href="#">
+				<span class="icon icon-gear"></span>
+				<span class="tab-label">设置</span>
+			</a>
+		</nav>
+
+		<!-- Compose modal -->
+		<div id="composeModal" class="modal">
+			<header class="bar bar-nav">
+				<a class="icon icon-left pull-left" href="#composeModal"></a>
+				<h1 class="title">New note</h1>
+			</header>
+
+			<div class="content">
+				<form class="content-padded">
+					<input type="text" placeholder="Title">
+					<textarea rows="10"></textarea>
+					<a class="btn btn-positive btn-block" href="#composeModal">
+						Save note
+					</a>
+				</form>
+			</div>
+		</div><!-- /.modal -->
+
+		<!-- Popover -->
+		<div id="navPopover" class="popover">
+			<ul class="table-view">
+				<li class="table-view-cell">
+					Item1
+				</li>
+				<li class="table-view-cell">
+					Item2
+				</li>
+				<li class="table-view-cell">
+					Item3
+				</li>
+				<li class="table-view-cell">
+					Item4
+				</li>
+				<li class="table-view-cell">
+					Item5
+				</li>
+				<li class="table-view-cell">
+					Item6
+				</li>
+				<li class="table-view-cell">
+					Item7
+				</li>
+				<li class="table-view-cell">
+					Item8
+				</li>
+				<li class="table-view-cell">
+					Item9
+				</li>
+				<li class="table-view-cell">
+					Item10
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>
