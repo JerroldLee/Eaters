@@ -1,3 +1,4 @@
+/*公共函数*/
 .fn-left{
 	float: left;
 }
@@ -7,6 +8,12 @@
 .fn-text-align-center {
 	text-align: center;
 }
+.padding-lr-5pecent{
+	padding: 0 10px;
+}
+	
+/*应用样式*/	
+
 input, img {
 	vertical-align: middle;
 }
@@ -93,4 +100,34 @@ img {
 	height: 100%;
 	overflow: hidden;
 	text-align: center;
+}
+.bar-tab {
+	top:50px;
+}
+
+.bar-nav {
+	z-index: 11;	
+}
+
+.bar .bar-nav-app {
+	padding-top:3px;
+}
+
+.navPopover{
+	position: absolute;
+	width: auto;
+	min-width: 120px;
+	font-size: 18px;
+	z-index: 99999;
+	color: #333;
+	left: auto;
+	right: 0;
+}
+
+.navPopover .table-view-cell{
+	padding: 10px;
+}
+
+#postPopover{
+	right: -200%;
 }
