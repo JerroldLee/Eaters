@@ -1,104 +1,156 @@
-//取消浏览器的所有事件，使得active的样式在手机上正常生效
-document.addEventListener( "touchstart", function(e) {
-    return false;
-}, false );
-// 屏蔽选择函数
-function shield() {
+(function(w){
+// 空函数
+function shield(){
 	return false;
 }
-document.oncontextmenu = shield;
+document.addEventListener("touchstart",shield,false);//取消浏览器的所有事件，使得active的样式在手机上正常生效
+document.oncontextmenu=shield;//屏蔽选择函数
 // H5 plus事件处理
-document.addEventListener( "plusready", function() {
-	gInit();
-	document.body.onselectstart = shield;
+var ws=null;
+function plusReady(){
+	ws=plus.webview.currentWebview();
 	// Android处理返回键
-	plus.ui.getSelfWindow().addEventListener( "back", function(){
+	plus.key.addEventListener("backbutton",function(){
 		back();
-	}, false );
-	// iOS平台使用滚动的div
-	if ( "iOS" == plus.os.name ) {
-		var t = document.getElementById("dcontent");
-		if ( t ) {
-			t.className = "sdcontent";
-		}
-		t = document.getElementById("content");
-		if ( t ) {
-			t.className = "scontent";
-		}
-	}
-}, false );
-// 兼容非H5 plus终端
-if ( navigator.userAgent.indexOf("Html5Plus") < 0 ) {
-	document.addEventListener( "DOMContentLoaded", function () {
-		gInit();
-		document.body.onselectstart = shield;
-	}, false );
+	},false);
+	compatibleAdjust();
 }
+if(w.plus){
+	plusReady();
+}else{
+	document.addEventListener("plusready",plusReady,false);
+}
+// DOMContentLoaded事件处理
+var domready=false;
+document.addEventListener("DOMContentLoaded",function(){
+	domready=true;
+	gInit();
+	document.body.onselectstart=shield;
+	compatibleAdjust();
+},false);
 // 处理返回事件
-function back() {
-	if ( window.plus ) {
-		plus.ui.getSelfWindow().close();
-	} else if ( history.length > 1 ) {
+w.back=function(){
+	if(w.plus){
+		alert("ws.close");
+		ws.close();//plus.ui.getSelfWindow().close();
+	}else if(history.length>1){
+		alert("history.back");
 		history.back();
-	} else {
-		window.close();
+	}else{
+		alert("w.close");
+		w.close();
 	}
-}
+};
 // 处理点击事件
-function clicked( id ) {
-	if ( window.plus ) {
-		var pre = "";//"http://192.168.1.178:8080/h5/";
-		plus.ui.createWindow( pre+id, {name:id,scalable:false} ).show( "slide-in-right", 300 );
-	} else {
-		window.open( id );
+var openw=null,waiting=null;
+/**
+ * 打开新窗口
+ * @param {URIString} id : 要打开页面url
+ * @param {boolean} wa : 是否显示等待框
+ * @param {boolean} ns : 是否不自动显示
+ */
+w.clicked=function(id,wa,ns){
+	if(openw){//避免多次打开同一个页面
+		return;
 	}
+	if(w.plus){
+		wa&&(waiting=plus.nativeUI.showWaiting());
+		var pre="";//"http://192.168.1.178:8080/h5/";
+		openw=plus.webview.create(pre+id,id,{scrollIndicator:'none',scalable:false});
+		ns||openw.addEventListener("loaded",function(){//页面加载完成后才显示
+			openw.show("slide-in-right",300);
+			closeWaiting();
+		},false);
+		openw.addEventListener("close",function(){//页面关闭后可再次打开
+			openw=null;
+		},false);
+	}else{
+		w.open(id);
+	}
+};
+/**
+ * 关闭等待框
+ */
+w.closeWaiting=function(){
+	waiting&&waiting.close();
+	waiting=null;
 }
+// 兼容性样式调整
+var adjust=false;
+function compatibleAdjust(){
+	if(adjust||!w.plus||!domready){
+		return;
+	}
+	// iOS平台使用滚动的div
+	if("iOS"==plus.os.name){
+		var t=document.getElementById("dcontent");
+		t&&(t.className="sdcontent");
+		t=document.getElementById("content");
+		t&&(t.className="scontent");
+	}
+	adjust=true;
+};
 // 通用元素对象
-var _dout_,_dcontent_;
-function gInit() {
-	_dout_ = document.getElementById("output");
-	_dcontent_ = document.getElementById("dcontent");
-}
+var _dout_=null,_dcontent_=null;
+w.gInit=function(){
+	_dout_=document.getElementById("output");
+	_dcontent_=document.getElementById("dcontent");
+};
 // 清空输出内容
-function outClean() {
-	_dout_.innerHTML = "";
-}
+w.outClean=function(){
+	_dout_.innerHTML="";
+};
 // 输出内容
-function outSet( s ) {
-	_dout_.innerHTML = s+"<br/>";
-	_dout_.scrollTop = 0;
-}
+w.outSet=function(s){
+	_dout_.innerHTML=s+"<br/>";
+	_dout_.scrollTop=0;
+};
 // 输出行内容
-function outLine( s ) {
-	_dout_.innerHTML += s+"<br/>";
-}
-
+w.outLine=function(s){
+	_dout_.innerHTML+=s+"<br/>";
+};
 // 格式化时长字符串，格式为"HH:MM:SS"
-function timeToStr( ts ) {
-	if ( isNaN(ts) ) {
+w.timeToStr=function(ts){
+	if(isNaN(ts)){
 		return "--:--:--";
 	}
-	var h = parseInt(ts/3600);
-	var m = parseInt((ts%3600)/60);
-	var s = parseInt(ts%60);
+	var h=parseInt(ts/3600);
+	var m=parseInt((ts%3600)/60);
+	var s=parseInt(ts%60);
 	return (ultZeroize(h)+":"+ultZeroize(m)+":"+ultZeroize(s));
-}
+};
 // 格式化日期时间字符串，格式为"YYYY-MM-DD HH:MM:SS"
-function dateToStr( d ) {
+w.dateToStr=function(d){
 	return (d.getFullYear()+"-"+ultZeroize(d.getMonth()+1)+"-"+ultZeroize(d.getDate())+" "+ultZeroize(d.getHours())+":"+ultZeroize(d.getMinutes())+":"+ultZeroize(d.getSeconds()));
-}
+};
 /**
  * zeroize value with length(default is 2).
  * @param {Object} v
  * @param {Number} l
  * @return {String} 
  */
-function ultZeroize( v, l ){
-	var z = "";
-	l = l||2;
-	v = String(v);
-	for ( var i=0; i < l-v.length; i++ ) {
-		z += "0";
+w.ultZeroize=function(v,l){
+	var z="";
+	l=l||2;
+	v=String(v);
+	for(var i=0;i<l-v.length;i++){
+		z+="0";
 	}
 	return z+v;
+};
+
+})(window);
+
+/*自定义*/
+// 创建并显示新窗口
+function openWebview(url, webviewId, webviewStyle){
+	webviewStyle = webviewStyle || {'width':'100%','height':'82%','left':'0','top':'90px', 'zindex':'0'};
+	var w = plus.webview.open( url, webviewId, webviewStyle);
+}
+
+// 创建并显示新窗口
+function createWebview(url, webviewId, webviewStyle){
+	webviewStyle = webviewStyle || {'width':'100%','height':'82%','left':'0','top':'90px', 'zindex':'0'};
+	var w = plus.webview.create( url, webviewId, webviewStyle );
+	w.show(); // 显示窗口
 }
